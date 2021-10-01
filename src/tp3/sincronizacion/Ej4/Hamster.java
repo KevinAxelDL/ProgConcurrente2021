@@ -32,7 +32,7 @@ public class Hamster implements Runnable{
         try{
             interactuables[actividad].accion(this.nombre);
         }catch(Exception exc){
-            System.out.println("Error: Metodo de clase inexistente");
+            System.out.println("Error:");
         }
         
     }
