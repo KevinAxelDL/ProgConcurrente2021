@@ -32,6 +32,8 @@ public class Main {
         ham2.crearIniciarHiloHamster();
         ham3.crearIniciarHiloHamster();
         
+        System.out.println("--FIN MAIN---");
+        
         
     }
 }

@@ -9,33 +9,54 @@ package tp3.sincronizacion.Ej6;
  *
  * @author user-
  */
-public abstract class Vehiculo {
+public abstract  class  Vehiculo implements Runnable{
     private String patente;
     private int kmFaltantesService;
     private int capacidadLitros;
     private int litrosActual;
     private Surtidor surtidorObjetivo;
+    private Thread hiloInst;
+    
+    public Vehiculo(String patenteIn, int kmFaltantesServiceIn, int capacidadLitrosIn, int litrosActualIn){
+        //Constructor usado por subclases
+        this.patente = patenteIn;
+        this.kmFaltantesService = kmFaltantesServiceIn;
+        this.capacidadLitros = capacidadLitrosIn;
+        this.litrosActual = litrosActualIn;
+    }
     
     public void run(){
         int accion;
         try{
             while(true){
-                accion = (int)(Math.random()*10)%3;
+                accion = (int)(Math.random()*10)%2;
                 switch(accion){
                         case 0: andar(); break;
                         case 1: andar(); break;
-                        case 2: parar(); break;
                 }
             }
         }catch(Exception exc){}
     }
     
+    public void creaIniciaHilo(){
+        //Crea e inicia un hilo para la instancia actual del objeto
+        Thread hilo = new Thread(this);
+        this.hiloInst = hilo;
+        this.hiloInst.start(); 
+    }
+    
+    public Thread getHilo(){
+        return this.hiloInst;
+    }
+    
     public void andar(){
         try{
-            System.out.println("Vehiculo "+ this.getPatente()+ " andando ...");
-            while(this.litrosActual != 10){
-                this.litrosActual = this.litrosActual - 1;
-                Thread.sleep(100);
+            if(this.litrosActual > 10){
+                System.out.println("Vehiculo "+ this.getPatente()+ " andando ...");
+                while(this.litrosActual > 10){
+                    this.litrosActual = this.litrosActual - 1;
+                    Thread.sleep(100);
+                }
             }
             System.out.println("Vehiculo "+ this.getPatente()+ " bajo en combustible ...");
             this.llenarTanque();
@@ -43,7 +64,7 @@ public abstract class Vehiculo {
             System.out.println("ERROR en hilo");
         }
     }
-    
+    /*
     public void parar(){
         try{
             System.out.println("Vehiculo "+ this.getPatente()+ " ha parado ...");
@@ -53,14 +74,14 @@ public abstract class Vehiculo {
             System.out.println("ERROR en hilo");
         }
     }
-    
+    */
     public void llenarTanque(){
         try{
             System.out.println("Vehiculo "+ this.getPatente()+ " esperando por surtidor...");
             this.surtidorObjetivo.usar(this);
-            System.out.println("Vehiculo "+ this.getPatente()+ "termino de usar el surtidor.");
         }catch(Exception exc){
             System.out.println("ERROR: El vehiculo no tiene un surtidor para usar");
+            
         }
     }
 
