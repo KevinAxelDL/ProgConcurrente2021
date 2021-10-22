@@ -15,7 +15,7 @@ public class Deposito {
     private int tamanio;
     
     public Deposito(){
-        tamanio = 3;
+        tamanio = 1;
         pos = 0;
         deposito = new Caja[tamanio];
     }
@@ -23,13 +23,14 @@ public class Deposito {
     public synchronized boolean depositar(Caja caja){
         boolean exito = true;
         
-        if(pos == tamanio-1){
+        if(pos > tamanio-1){
             //No hay mas espacio en el deposito
             exito = false;
         }else{
-            pos++;
             deposito[pos] = caja;
             System.out.println("Caja depositada");
+            pos++;
+            System.out.println("Espacio en el deposito: ("+ pos +"/"+ tamanio +")");
         }
         return exito;
     }

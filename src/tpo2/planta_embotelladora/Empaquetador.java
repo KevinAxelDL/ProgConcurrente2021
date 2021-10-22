@@ -39,7 +39,7 @@ public class Empaquetador implements Runnable{
                 caja.getSemCajaNuevaDisponible().release();//Se indica que hay una nueva caja vacia
             }else{
                 //No hay espacio en el deposito
-                System.out.println("YA NO HAY MAS ESPACIO EN EL DEPOSITO!");
+                System.out.println("YA NO HAY MAS ESPACIO EN EL DEPOSITO, CAJA NO DEPOSITADA!");
                 depDisponible = false;
             }
         }

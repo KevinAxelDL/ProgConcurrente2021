@@ -26,6 +26,7 @@ public class Embotellador implements Runnable{
     
     private void embotellar(){
         if(caja != null){
+            System.out.println("Caja asignada a embotellador");
             try{
                 caja.getSemCajaNuevaDisponible().acquire();//Adquiere permiso            
             }catch(Exception exc){
