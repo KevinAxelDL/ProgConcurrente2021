@@ -14,5 +14,24 @@ public class Main {
     //El empaquetador recibe cajas llenas
     //El empaquetador sella y guarda las cajas
     //El empaquetador deposita una nueva caja para llenar
-    //El emotelladro no puede llenar una caja hasta que este disponible
+    //El embotellador no puede llenar una caja hasta que se le de una nueva
+    public static void main(String[]args){
+        Deposito dep1 = new Deposito();
+        Embotellador emb1 = new Embotellador();
+        Empaquetador emp1 = new Empaquetador(emb1, dep1);
+        
+        Thread t1 = new Thread(emb1);
+        Thread t2 = new Thread(emp1);
+        
+        t1.start();
+        t2.start();
+        
+        try{
+            t1.join();
+            t2.join();
+        }catch(Exception exc){
+            System.out.println("ERROR EN join()");
+        }
+        System.out.println("---FIN MAIN---");
+    }
 }

@@ -27,7 +27,7 @@ public class Recurso {
     }
     
     public void hacerS1(){
-        System.out.println("S1 en ejecucucion");
+        System.out.println("S1 en ejecucion");
         try{
             Thread.sleep(500);
         }catch(InterruptedException exc){
@@ -36,7 +36,7 @@ public class Recurso {
     }
     
     public void hacerS2(){
-        System.out.println("S2 en ejecucucion");
+        System.out.println("S2 en ejecucion");
         try{
             Thread.sleep(500);
         }catch(InterruptedException exc){
@@ -45,7 +45,7 @@ public class Recurso {
     }
     
     public void hacerS3(){
-        System.out.println("S3 en ejecucucion");
+        System.out.println("S3 en ejecucion");
         try{
             Thread.sleep(500);
         }catch(InterruptedException exc){
@@ -54,7 +54,7 @@ public class Recurso {
     }
     
     public void hacerS4(){
-        System.out.println("S4 en ejecucucion");
+        System.out.println("S4 en ejecucion");
         System.out.println("---");
         try{
             Thread.sleep(500);
