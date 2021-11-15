@@ -12,7 +12,6 @@ package tpo3.carpinteria;
 public class Ensamblador {
 
     //Monitor
-    private int maxMuebles;
     private int parte1Lista;
     private int parte2Lista;
     private int parte3Lista;
