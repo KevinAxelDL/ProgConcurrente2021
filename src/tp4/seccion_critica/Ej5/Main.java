@@ -19,6 +19,39 @@ public class Main {
         impresora compatible con él y que no esté siendo utilizada por otro 
         usuario. En otro caso el proceso deberá esperar.
         */
+        
+        //Usuarios
+        Usuario us1 = new Usuario("A");
+        Usuario us2 = new Usuario("B");
+        UsuarioGenerico us3 = new UsuarioGenerico();
+
+        //Impresoras
+        Impresora impA = new Impresora("A");
+        Impresora impB = new Impresora("B");
+        
+        //Coleccion de impresoras
+        Impresora[] colImpresoras = {impA, impB};
+        //Se asignan las impresoras a los usuarios
+        Usuario.setColImpresoras(colImpresoras);
+        //
+        Thread t1 = new Thread(us1);
+        Thread t2 = new Thread(us2);
+        Thread t3 = new Thread(us3);
+
+        
+        t1.start();
+        t2.start();
+        t3.start();
+
+        
+        try{
+            t1.join();
+            t2.join();
+            t3.join();
+        }catch(Exception exc){
+            System.out.println("ERROR EN HILO");
+        }
+        System.out.println("---FIN MAIN---");
     }
     
 }

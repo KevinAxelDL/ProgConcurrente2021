@@ -15,7 +15,7 @@ public class Deposito {
     private int tamanio;
     
     public Deposito(){
-        tamanio = 1;
+        tamanio = 5;
         pos = 0;
         deposito = new Caja[tamanio];
     }
